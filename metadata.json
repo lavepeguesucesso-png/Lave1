@@ -1,0 +1,5 @@
+{
+  "name": "Lave & Pague Analytics",
+  "description": "A dashboard to analyze laundromat sales data, visualizing revenue, cycle types (Wash/Dry), and peak operational hours from CSV reports.",
+  "requestFramePermissions": []
+}

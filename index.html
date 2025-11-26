@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lave & Pague Analytics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "recharts": "https://aistudiocdn.com/recharts@^3.5.0"
+  }
+}
+</script>
+<style>
+  @media print {
+    body {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      background-color: white !important;
+    }
+    
+    /* Hide everything by default in print mode */
+    .no-print {
+      display: none !important;
+    }
+
+    /* Only show specific print container */
+    .print-only {
+      display: block !important;
+      position: static !important;
+      visibility: visible !important;
+      left: 0 !important;
+      top: 0 !important;
+      width: 100% !important;
+    }
+
+    /* Page breaks */
+    .page-break {
+      break-after: page;
+    }
+
+    /* Remove shadows and border radiuses for cleaner print */
+    .shadow-sm, .shadow-lg {
+      box-shadow: none !important;
+    }
+    
+    /* Ensure charts have height */
+    .recharts-responsive-container {
+      min-height: 300px !important;
+    }
+  }
+
+  /* Screen styles for the print container 
+     CRITICAL: Do NOT use display: none here. 
+     Recharts needs dimensions to render. 
+     We position it off-screen instead.
+  */
+  .print-only {
+    position: absolute;
+    top: 0;
+    left: -10000px; /* Move off-screen */
+    width: 1024px; /* Fixed width to ensure charts render consistently */
+    visibility: hidden; /* Hide visually but keep in DOM for layout */
+    height: auto;
+    overflow: visible;
+  }
+</style>
+</head>
+  <body class="bg-slate-50 text-slate-900">
+    <div id="root"></div>
+  </body>
+</html>
