@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { FileUpload } from './components/FileUpload';
-import { Dashboard } from './components/Dashboard';
-import { ComparativeView } from './components/ComparativeView';
-import { RevenueDashboard } from './components/RevenueDashboard';
-import { ExportModal } from './components/ExportModal';
-import { FullReport } from './components/FullReport';
-import { parseCSV } from './services/csvParser';
-import { Transaction, DashboardMetadata, ExportOptions } from './types';
+import { FileUpload } from './components/FileUpload.tsx';
+import { Dashboard } from './components/Dashboard.tsx';
+import { ComparativeView } from './components/ComparativeView.tsx';
+import { RevenueDashboard } from './components/RevenueDashboard.tsx';
+import { ExportModal } from './components/ExportModal.tsx';
+import { FullReport } from './components/FullReport.tsx';
+import { parseCSV } from './services/csvParser.ts';
+import { Transaction, DashboardMetadata, ExportOptions } from './types.ts';
 import { Loader2, ArrowLeft, User, UserCog, GitCompare, DollarSign, Download } from 'lucide-react';
 
 interface ReportData {
