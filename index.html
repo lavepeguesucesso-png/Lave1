@@ -4,89 +4,83 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lave & Pague Analytics</title>
+    <!-- Keeping Tailwind CDN for simplicity in styling without complex PostCSS config -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Screen styles */
+      body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Print Overlay Strategy */
+      .print-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: white;
+        z-index: 9999;
+        overflow-y: auto;
+        padding: 20px;
+      }
+
+      @media print {
+        body {
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+          background-color: white !important;
+          overflow: visible !important;
+        }
+        
+        .no-print {
+          display: none !important;
+        }
+
+        .print-overlay {
+          position: static !important;
+          z-index: auto !important;
+          padding: 0 !important;
+          overflow: visible !important;
+          height: auto !important;
+        }
+
+        .page-break {
+          break-after: page;
+          page-break-after: always;
+        }
+
+        .break-inside-avoid {
+          break-inside: avoid;
+          page-break-inside: avoid;
+        }
+
+        .shadow-sm, .shadow-lg, .shadow-2xl {
+          box-shadow: none !important;
+        }
+        
+        .recharts-responsive-container {
+          min-height: 300px !important;
+        }
+      }
+    </style>
   <script type="importmap">
 {
   "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1",
     "react/": "https://aistudiocdn.com/react@^19.2.0/",
     "react": "https://aistudiocdn.com/react@^19.2.0",
     "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "vite": "https://aistudiocdn.com/vite@^7.2.4",
     "recharts": "https://aistudiocdn.com/recharts@^3.5.0"
   }
 }
 </script>
-<style>
-  /* Screen styles */
-  body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  /* Print Overlay Strategy:
-     Instead of hiding content off-screen, we overlay the print content 
-     on top of the app when printing is active. This ensures charting libraries
-     can measure the viewport correctly.
-  */
-  .print-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: white;
-    z-index: 9999;
-    overflow-y: auto;
-    padding: 20px;
-  }
-
-  @media print {
-    body {
-      -webkit-print-color-adjust: exact !important;
-      print-color-adjust: exact !important;
-      background-color: white !important;
-      overflow: visible !important;
-    }
-    
-    /* Hide the interactive app completely */
-    .no-print {
-      display: none !important;
-    }
-
-    /* Ensure the print container is visible and resets positioning */
-    .print-overlay {
-      position: static !important;
-      z-index: auto !important;
-      padding: 0 !important;
-      overflow: visible !important;
-      height: auto !important;
-    }
-
-    /* Page breaks */
-    .page-break {
-      break-after: page;
-      page-break-after: always;
-    }
-
-    /* Avoid breaking inside cards/charts */
-    .break-inside-avoid {
-      break-inside: avoid;
-      page-break-inside: avoid;
-    }
-
-    /* Remove shadows/borders for cleaner ink usage */
-    .shadow-sm, .shadow-lg, .shadow-2xl {
-      box-shadow: none !important;
-    }
-    
-    /* Ensure charts preserve their height */
-    .recharts-responsive-container {
-      min-height: 300px !important;
-    }
-  }
-</style>
 </head>
   <body class="bg-slate-50 text-slate-900">
     <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>
